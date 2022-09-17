@@ -1,0 +1,22 @@
+.grid {
+  display: grid;
+  margin:-20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 15px;
+  justify-items:center;
+  z-index:-1;
+
+}
+
+.middle {
+    height: 22vh;
+    background-color: rgb(45, 45, 94);
+   
+  }
+ 
+  
+  .main p {
+    background-color: white;
+  }
+  
