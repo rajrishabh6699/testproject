@@ -6,8 +6,9 @@
   width: 15vw;
   font-size: 12px;
 }
+
 .smallCard {
   display: flex;
   justify-content: space-between;
-  margin-top:5px
+  margin-top: 5px;
 }

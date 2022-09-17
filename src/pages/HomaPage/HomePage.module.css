@@ -46,15 +46,11 @@
   width: 460px;
 }
 
-.foot{
-    display: flex;
-    justify-content: space-evenly;
-    margin:15px;
-
+.foot {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 15px;
 }
-.last{
-    margin:10vh;
-    
-    
+.last {
+  margin: 10vh;
 }
-
