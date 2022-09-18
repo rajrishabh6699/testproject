@@ -4,21 +4,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useHistory } from 'react-router';
 import axios from 'axios';
 
-export default function (props) {
-  let history = useHistory();
+export default function () {
+  const history = useHistory();
   const [hasError, setHasError] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [authToken, setAuthToken] = useState('');
 
   const authenticateUser = async () => {
     try {
       const { data } = await axios.post(
         'https://jobs-api.squareboat.info/api/v1/auth/login',
         {
-          data: {
-            email: 'squareboat@gmail.com',
-            password: 'squareboat'
+          ...{
+            email,
+            password
           }
         }
       );
+      if (data.success) return data.data.token;
       return null;
     } catch (error) {
       console.error('Error logging: ', error);
@@ -30,8 +34,10 @@ export default function (props) {
     e.preventDefault();
     authenticateUser().then(data => {
       if (data) {
+        setAuthToken(data);
         history.push('/jobs');
       } else {
+        setAuthToken(null);
         setHasError(true);
       }
     });
@@ -50,6 +56,9 @@ export default function (props) {
                 type="email"
                 className="form-control mt-1"
                 placeholder="Enter email"
+                onChange={e => setEmail(e.target.value)}
+                value={email}
+                autoComplete="off"
               />
             </div>
             <div className="form-group mt-3">
@@ -59,6 +68,9 @@ export default function (props) {
                 type="password"
                 className="form-control mt-1"
                 placeholder="Enter password"
+                onChange={e => setPassword(e.target.value)}
+                value={password}
+                autoComplete="off"
               />
             </div>
             {hasError && (
