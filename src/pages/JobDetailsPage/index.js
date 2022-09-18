@@ -4,7 +4,8 @@ import Header from '../../components/Header';
 import JobCard from '../../components/jobCard';
 import { getJobs } from './jobDetailsPage.utils';
 import { customStyles } from './jobDetailsPage.constants';
-import homeIcon from './home-icon.svg';
+import HomeIcon from './home-icon.svg';
+import EmptyIcon from './empty-icon.svg';
 import JobModal from '../../components/jobModal';
 
 const JobDetailsPage = () => {
@@ -45,7 +46,7 @@ const JobDetailsPage = () => {
               alignItems: 'center'
             }}
           >
-            <img src={homeIcon} height="15px"></img>
+            <img src={HomeIcon} height="15px"></img>
             <p style={{ color: 'white', fontSize: '15px', margin: '0 0 0 8px' }}>Home</p>
           </div>
           <p style={{ color: 'white', margin: '24px 0 0 50px', fontSize: '22px' }}>
@@ -81,9 +82,35 @@ const JobDetailsPage = () => {
               <JobCard jobData={job} key={job.id} setModalState={setModalState} />
             ))
           ) : (
-            <>
-              <p>No jobs posted</p>
-            </>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100vw',
+                height: 'calc(100vh - 310px)',
+                justifyContent: 'center',
+                alignItems: 'center',
+                margin: '0 150px 0 0'
+              }}
+            >
+              <img src={EmptyIcon} />
+              <p style={{ margin: '20px 0 0 0', color: '#303F60' }}>
+                Your posted jobs will show here.
+              </p>
+              <button
+                style={{
+                  background: '#43AFFF',
+                  width: '148px',
+                  padding: '13px 34px 14px 34px',
+                  border: '1px solid #43AFFF',
+                  borderRadius: '5px',
+                  color: '#FFFFFF',
+                  margin: '40px 0 0 0 '
+                }}
+              >
+                Post a Job
+              </button>
+            </div>
           )}
         </div>
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>

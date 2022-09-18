@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import ModalContext from '../../context/modalcontext';
+import React from 'react';
 import LocationIcon from './location-icon.svg';
 import classes from './JobCard.module.css';
 
@@ -13,46 +12,38 @@ export default function JobCard({ jobData, setModalState }) {
   return (
     <div
       style={{
+        display: 'flex',
+        flexDirection: 'column',
         width: '18%',
         boxSizing: 'border-box',
         margin: '0 10px 10px 0',
-        height: '162px',
+        height: '192px',
         borderRadius: '5px',
         padding: '15px',
         boxSizing: 'border-box',
         boxShadow: '0px 3px 6px #557DA526',
-        background: 'white'
+        background: 'white',
+        justifyContent: 'space-between'
       }}
       id={jobData.id}
     >
-      <p
-        style={{
-          width: '100%',
-          overflow: 'hidden',
-          height: '20px',
-          margin: '0 0 10px 0',
-          color: '#303F60',
-          opacity: '1',
-          fontSize: '17px',
-          textOverflow: 'ellipsis'
-        }}
-      >
-        {jobData.title}
-      </p>
-      <p
-        style={{
-          width: '100%',
-          height: '64px',
-          margin: '0 0 6px 0',
-          color: '#303F60',
-          opacity: '0.8',
-          fontSize: '16px',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis'
-        }}
-      >
-        {jobData.description}
-      </p>
+      <>
+        <p
+          style={{
+            width: '100%',
+            overflow: 'hidden',
+            height: '20px',
+            margin: '0 0 10px 0',
+            color: '#303F60',
+            opacity: '1',
+            fontSize: '17px',
+            textOverflow: 'ellipsis'
+          }}
+        >
+          {jobData.title}
+        </p>
+        <p className={classes.description}>{jobData.description}</p>
+      </>
       <div
         style={{
           height: '50px',
@@ -91,7 +82,8 @@ export default function JobCard({ jobData, setModalState }) {
             borderRadius: '5px',
             background: '#43AFFF33',
             boxSizing: 'border-box',
-            padding: '6px 0 6px 13px'
+            padding: '6px 0 6px 13px',
+            cursor: 'pointer'
           }}
           onClick={showModalHandler}
         >
